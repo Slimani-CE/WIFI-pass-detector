@@ -1,29 +1,57 @@
 //this Vol content an additional quastion to learn more about a WIFI interface
 // last Update 02/08/2020
+// know you can delet config.dat file and the script will work even that,  
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+void logo()
+{
+	FILE *Config ;
+	char buff[100];
+	Config=fopen("Config\\Config.dat","r");
+	system("cls");
+	while(!feof(Config))
+	{
+		if(!fgets(buff,100,Config))
+			break;
+		printf("%s",buff);
+
+	}
+}
+
 void Enter()
 {
 	FILE *Config;
 	char buff[100];
-	printf("Hello Friends! this script will get you all saved passwords \n");
-	printf(" of the WIFIs interfaces that you have been conecting with \n");
-	printf("            created by: Mustapha Slimani \n\n");
+	Quastion1:
 	printf("type yes to start the  script\n");
 	printf("type close to exit the script\n");
 	printf("type:");
 	gets(buff);
 	if(!strcmp(buff,"close"))
 		exit(1);
-	Config=fopen("Config\\Config.dat","r");
-	system("cls");
-	while(!feof(Config))
+	else
 	{
-		fgets(buff,100,Config);
-		printf("%s",buff);
+		if(!strcmp(buff,"yes"))
+		{
+			Config=fopen("Config\\Config.dat","r");
+			system("cls");
+			while(!feof(Config))
+			{
+				if(!fgets(buff,100,Config))
+					break;
+				printf("%s",buff);
+
+			}
+			fclose(Config);
+		}
+		else 
+			{
+				printf("Please try again!\n");
+				goto Quastion1;
+			}
 	}
 }
 
@@ -62,6 +90,9 @@ char* SelectPass()
 
 int main()
 {
+	printf("Hello Friends! this script will get you all saved passwords \n");
+	printf(" of the WIFIs interfaces that you have been conecting with \n");
+	printf("            created by: Mustapha Slimani \n\n");
 	Enter();
 	start:
 	printf("\nGetting your WIFIs passwords\n");
@@ -139,7 +170,7 @@ int main()
 	strcpy(buff3,buff2);
 	system("cls");
 	buff1[strlen(buff1)-1]='\0';
-	Enter();
+	logo();
 	printf("\nLooking for passwords for %s WIFI interface\n",buff1);
 	char *buff=SelectPass();
 	if(!strcmp(buff,"NULL"))
@@ -161,7 +192,7 @@ int main()
 	{
 		if(Answer==1)
 			{
-				Enter();
+				logo();
 				goto start ;
 			}
 		else
@@ -169,7 +200,7 @@ int main()
 				if(Answer==2)
 				{
 					system("cls");
-					Enter();
+					logo();
 					printf("\n");
 					for(i=0;i<strlen(buff3);i++)
 						if(buff3[i]=='>')
