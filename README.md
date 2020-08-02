@@ -1,0 +1,2 @@
+# WIFI-pass-detector
+this .exe script will get you all saved password of the old wifi interface you have been connecting with, case if you forget them, we all know that you can do it using cmd's commands this script will just facilitate the idea, will get you all wifi interfaces and you just need to select one of them to get you the password if it exests, and get you some additional infos about that interface if you want. you don't need to know the cmd's commands used you just need to select.
