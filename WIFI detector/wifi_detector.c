@@ -1,7 +1,11 @@
-//this Vol content an additional quastion to learn more about a WIFI interface
-//this vol content an additional situation of non saved passwords
-// last Update 04/08/2020
-// know you can delet config.dat file and the script will work even that,  
+// this Vol content an additional quastion to learn more about a WIFI interface
+// this vol content an additional situation of non saved passwords
+// now you can delet config.dat file and the script will work even that,  
+// Update 04/08/2020
+// Last Update 26/08/2020
+// now if there are some opne WI-FIs the script show a message that clarify that the WI-FI is open .
+
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -197,7 +201,7 @@ int main()
 	char *buff=SelectPass();
 	if(!strcmp(buff,"NULL"))
 		{
-			printf("There are no passwords saved!!\n");
+			printf("This WI-FI is open!!\n");
 			goto Quastion;
 		}
 	else 
