@@ -1,5 +1,6 @@
 //this Vol content an additional quastion to learn more about a WIFI interface
-// last Update 02/08/2020
+//this vol content an additional situation of non saved passwords
+// last Update 04/08/2020
 // know you can delet config.dat file and the script will work even that,  
 
 #include <stdio.h>
@@ -95,9 +96,8 @@ int main()
 	printf("            created by: Mustapha Slimani \n\n");
 	Enter();
 	start:
-	printf("\nGetting your WIFIs passwords\n");
+	printf("\nGetting your WIFIs passwords\n");	
 	system("netsh wlan show profile > Config\\Profiles.dat");
-
 	FILE *profiles ;
 	profiles=fopen("Config\\Profiles.dat","r");
 	char buff1[100] , buff2[100] ;
@@ -119,6 +119,7 @@ int main()
 			}
 		}
 	}
+
 	fscanf(profiles,"%s",buff1);
 	int i=0 ;
 	char car ;
@@ -142,10 +143,30 @@ int main()
 	}
 	fclose(profiles_name);
 	FILE *interfaces_command=fopen("Config\\interfaces_command.dat","w") ; 
-	
 	profiles_name=fopen("Config\\profiles_name.dat","r"); 
-	printf("\nSelect a number of the wifi's interface you want!\n");
 	int lenght=i ;
+	int Number ;
+	if(lenght<=1)
+	{
+		printf("there are no WIFI passwords saved in your computer !!\n");
+		Quastion2:
+		printf("1:Exit\n2:Try again\n");
+		printf("type:");
+		scanf("%d",&Number);
+		if(Number==1)
+			exit(1);
+		else
+		{
+			if(Number==2)
+				goto start ;
+			else
+			{
+				printf("Please try again!!\n");
+				goto Quastion2;
+			}
+		}
+	}
+	printf("\nSelect a number of the wifi you want!\n");
 	for(i=1;i<lenght;i++)
 	{
 		fgets(buff1,30,profiles_name);
@@ -153,8 +174,9 @@ int main()
 		fprintf(interfaces_command,"netsh wlan show profile name=\"%s\" key=clear > Config\\Interface.dat\n",buff1);
 		printf("%d : %s\n",i,buff1);
 	}
+	printf("type:");
 	fclose(interfaces_command);
-	int Number ;
+
 	scanf("%d",&Number);
 	fseek(profiles_name,0,SEEK_SET);
 	fseek(interfaces_command,0,SEEK_SET);
